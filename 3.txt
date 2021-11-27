@@ -1,0 +1,25 @@
+import time
+start_time = time.time()
+def bin_search(ls1, low, high, n):
+    if (high < low):
+        return None
+    else:
+        m = low + ((high - low) // 2)
+        if ls1[m] > n:
+            return bin_search(ls1, low, m - 1, n)
+        elif ls1[m] < n:
+            return bin_search(ls1, m + 1, high, n)
+        else:
+            return m
+ls1 = []
+for i in range(1000000):
+    ls1.append(i)
+
+print(bin_search(ls1, 0, 999999, 5))
+print("Время поиска %s" % (time.time()-start_time))
+     
+# 1 - Время поиска 0.016641855239868164
+# 10 - Время поиска 0.01716160774230957
+# 100 - Время поиска 0.02509140968322754
+# 1000 - Время поиска 0.015192270278930664
+#1000000 - Время поиска 0.13772034645080566

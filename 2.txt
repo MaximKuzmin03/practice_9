@@ -1,0 +1,31 @@
+from random import randint
+import time
+start_time = time.time()
+def binary_search(ls, n):
+    low = 0
+    high = len(ls) - 1
+    while low <= high:
+        mid = (low+high)//2
+        if ls[mid] == n:
+            return mid
+            
+        elif ls[mid] > n:
+            high = mid-1
+        elif ls[mid] < n:
+            low = mid+1
+    return None
+    
+
+
+ls = [randint(0,1000000) for i in range(1000000)]
+ls = sorted(ls)
+print(ls)
+binary_search(ls, 0)
+print("Время поиска %s" % (time.time()-start_time))
+
+
+# 1 - Время поиска 0.025865554809570312
+# 10 - Время поиска 0.011240005493164062
+# 100 - Время поиска 0.01271677017211914
+# 1000 - Время поиска 0.035009145736694336
+#1000000 - Время поиска 0.8943097591400146
